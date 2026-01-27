@@ -227,3 +227,10 @@ All endpoints return JSON. For `/ask`, the response includes:
 ---
 
 These steps will make the system more robust, explainable, and production-ready, while supporting ongoing research and improvement in codebase Q&A.
+
+System Design:
+![alt text](<Screenshot 2026-01-25 at 8.48.15 PM.png>)
+
+
+Working Demo:
+![alt text](<Screenshot 2026-01-27 at 10.15.09 PM.png>)
