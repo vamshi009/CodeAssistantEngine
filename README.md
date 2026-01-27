@@ -233,4 +233,11 @@ System Design:
 
 
 Working Demo:
+
+Ask request:
+
 ![alt text](<Screenshot 2026-01-27 at 10.15.09 PM.png>)
+
+Ingest Request:
+
+![alt text](<Screenshot 2026-01-27 at 11.01.59 PM.png>)
