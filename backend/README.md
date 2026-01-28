@@ -205,3 +205,5 @@ These steps will make the system more robust, explainable, and production-ready,
 
 ## Summary
 This backend is designed for clarity, modularity, and production readiness, with a focus on maintainability and extensibility. All major design choices are documented and justified for future contributors and reviewers. The system is ready for practical extension in multiple directions, with clear reasoning for each.
+
+![alt text](<Screenshot 2026-01-28 at 9.51.41 AM.png>)
