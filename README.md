@@ -241,3 +241,6 @@ Ask request:
 Ingest Request:
 
 ![alt text](<Screenshot 2026-01-27 at 11.01.59 PM.png>)
+
+
+![alt text](<Screenshot 2026-01-28 at 9.51.41 AM.png>)
