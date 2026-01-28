@@ -226,7 +226,40 @@ All endpoints return JSON. For `/ask`, the response includes:
 
 ---
 
-These steps will make the system more robust, explainable, and production-ready, while supporting ongoing research and improvement in codebase Q&A.
+# System Design Reasoning
+
+## Vector Store Choices: Chroma (Local) & Pinecone (Production)
+- **Chroma** is chosen for local development because it is lightweight, easy to set up, and requires no external cloud dependencies. This makes it ideal for rapid prototyping, testing, and individual developer workflows.
+- **Pinecone** is used for production because it is a managed, scalable vector database that handles large-scale, concurrent queries and persistent storage. This enables the system to scale seamlessly for teams and organizations.
+- **Flexibility:** The system can switch between Chroma and Pinecone via configuration, supporting both local and cloud deployments without code changes.
+
+## Embedding Model Flexibility
+- The system supports both **OpenAI embeddings** (cloud, high-quality, state-of-the-art) and **Sentence Transformers** (local, privacy-friendly, cost-effective).
+- This allows users to choose between:
+  - **OpenAI** for best-in-class embeddings when privacy and cost are less of a concern.
+  - **Sentence Transformers** for running everything locally, ensuring data privacy and reducing costs.
+- The embedding backend is configurable via environment variables or config files, making it easy to adapt to different requirements.
+
+## LLM Flexibility: OpenAI, Ollama, Local Quantized Models
+- The backend supports:
+  - **OpenAI GPT-4** for high-quality, cloud-based completions.
+  - **Ollama** for running open-source LLMs locally (e.g., Llama 2, Mistral) with minimal setup.
+  - **Local quantized models** (via llama-cpp-python) for fully offline, resource-efficient inference.
+- This flexibility allows users to optimize for cost, privacy, or performance as needed, and to experiment with new LLMs as they become available.
+
+## Chunking & Cross-File Reasoning
+- Chunking is configurable (line-based, AST, or auto) to best match the codebase structure and use case.
+- Cross-file reasoning is enabled by extracting and storing function/class relationships, allowing the assistant to answer questions that span multiple files or modules.
+
+## Modularity & Observability
+- The system is highly modular, with clear separation of concerns (ingestion, vector store, LLM, UI, logging).
+- Structured logging and error handling are built in, supporting debugging and future integration with observability platforms.
+
+## Why These Choices?
+- **Developer Experience:** Local-first tools (Chroma, Sentence Transformers) make it easy for developers to get started and iterate quickly.
+- **Scalability:** Pinecone and OpenAI enable seamless scaling to production workloads.
+- **Flexibility:** Configurable backends for embeddings and LLMs allow the system to adapt to different privacy, cost, and performance needs.
+- **Maintainability:** Modular design and clear configuration make the system easy to extend and maintain.
 
 System Design:
 ![alt text](<Screenshot 2026-01-25 at 8.48.15 PM.png>)
