@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Documentation Assistant – Product Overview</title>
+    <style>
+        body {
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+            margin: 0; padding: 0;
+            background: linear-gradient(135deg, #e3f0ff 0%, #f7e8ff 100%);
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(60, 60, 120, 0.12);
+            padding: 40px 32px;
+        }
+        h1 {
+            color: #5b2cff;
+            font-size: 2.5em;
+            margin-bottom: 0.2em;
+            text-align: center;
+        }
+        h2 {
+            color: #2196f3;
+            margin-top: 2em;
+        }
+        h3 {
+            color: #43a047;
+        }
+        .section {
+            margin-bottom: 36px;
+        }
+        ul {
+            margin-left: 1.5em;
+        }
+        .next-steps {
+            background: linear-gradient(90deg, #eaf6ff 60%, #f7e8ff 100%);
+            border-left: 6px solid #5b2cff;
+            padding: 18px;
+            border-radius: 8px;
+        }
+        .scalable {
+            background: linear-gradient(90deg, #e8f5e9 60%, #e3f0ff 100%);
+            border-left: 6px solid #43a047;
+            padding: 18px;
+            border-radius: 8px;
+        }
+        .tech-decisions {
+            background: linear-gradient(90deg, #fffde7 60%, #eaf6ff 100%);
+            border-left: 6px solid #fbc02d;
+            padding: 18px;
+            border-radius: 8px;
+        }
+        .conversation {
+            background: #f7e8ff;
+            border-radius: 8px;
+            padding: 18px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(91,44,255,0.07);
+        }
+        .conversation .user {
+            color: #2196f3;
+            font-weight: bold;
+        }
+        .conversation .assistant {
+            color: #5b2cff;
+            font-weight: bold;
+        }
+        .demo-img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 16px 0;
+            box-shadow: 0 2px 8px rgba(91,44,255,0.07);
+        }
+        .footer {
+            color: #888;
+            font-size: 0.95em;
+            margin-top: 32px;
+            text-align: center;
+        }
+        @media (max-width: 600px) {
+            .container { padding: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Code Documentation Assistant</h1>
+        <div class="conversation">
+            <div class="user">User: How does the API endpoint work?</div>
+            <div class="assistant">Assistant: The API endpoint receives your question, retrieves relevant code chunks, expands context with related functions/classes, and uses an LLM to generate a precise answer.</div>
+            <div class="user">User: Is this scalable for large teams?</div>
+            <div class="assistant">Assistant: Yes! The system is containerized, supports cloud vector DBs, and can be deployed on AWS, GCP, or Azure. Authentication and monitoring can be added for enterprise use.</div>
+        </div>
+        <div class="section">
+            <h2>What is it?</h2>
+            <p>A developer-focused AI assistant that ingests your codebase and answers questions about architecture, functionality, API endpoints, and dependencies. It uses Retrieval-Augmented Generation (RAG) and advanced chunking to provide context-aware, accurate answers for engineering teams.</p>
+        </div>
+        <div class="section">
+            <h2>Current Technical Decisions</h2>
+            <div class="tech-decisions">
+                <ul>
+                    <li><strong>Python & FastAPI</strong> for backend APIs</li>
+                    <li><strong>ChromaDB</strong> (local) & <strong>Pinecone</strong> (cloud) for vector search</li>
+                    <li><strong>OpenAI GPT-4, Ollama, Local Quantized LLMs</strong> for flexible LLM backend</li>
+                    <li><strong>Configurable chunking</strong> (AST, line, auto) for code structure awareness</li>
+                    <li><strong>Cross-file reasoning</strong> for deeper answers</li>
+                    <li><strong>Streamlit UI</strong> for interactive usage</li>
+                    <li><strong>Structured logging & error handling</strong> for observability</li>
+                </ul>
+            </div>
+        </div>
+        <div class="section">
+            <h2>Scalability & Productionization</h2>
+            <div class="scalable">
+                <ul>
+                    <li>Containerized with Docker for easy deployment</li>
+                    <li>Supports managed vector DBs (Pinecone) for scale</li>
+                    <li>Ready for cloud deployment (AWS ECS, GCP Cloud Run, Azure App Service)</li>
+                    <li>Authentication, rate limiting, and monitoring can be added for enterprise use</li>
+                    <li>Modular codebase for maintainability and extension</li>
+                </ul>
+            </div>
+        </div>
+        <div class="section">
+            <h2>Next Steps</h2>
+            <div class="next-steps">
+                <ul>
+                    <li>Integrate <strong>LangGraph</strong> or similar orchestration for multi-step query enhancement</li>
+                    <li>Implement <strong>actor-critic</strong> or agent-based context refinement</li>
+                    <li>Explore efficient retrieval tools (FAISS, Milvus, Weaviate)</li>
+                    <li>Add <strong>explainability</strong> features to visualize query flow and context</li>
+                    <li>Build a framework for <strong>system evaluation</strong> and prompt versioning</li>
+                </ul>
+            </div>
+        </div>
+        <div class="section">
+            <h2>Demo Screenshots</h2>
+            <img src="Screenshot%202026-01-27%20at%2010.15.09%E2%80%AFPM.png" alt="Ask Request Demo" class="demo-img">
+            <img src="Screenshot%202026-01-27%20at%2011.01.59%E2%80%AFPM.png" alt="Ingest Request Demo" class="demo-img">
+        </div>
+        <div class="footer">
+            &copy; 2026 Code Documentation Assistant &mdash; Built for developers and product managers.<br>
+            <em>Contact: your.email@domain.com</em>
+        </div>
+    </div>
+</body>
+</html>
