@@ -181,7 +181,7 @@ class PineconeVectorStore(VectorStore):
         logger.info("Would clear Pinecone index")
 
 
-def get_vector_store() -> VectorStore:
+def get_vector_store_2() -> VectorStore:
     """Factory function to get appropriate vector store"""
     # For development, use Chroma (no external service needed)
     # For production, use Pinecone

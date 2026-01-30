@@ -1,5 +1,22 @@
 # Quick setup instructions for Code Documentation Assistant
 
+About this project:
+
+ - We have built a RAG system which is suitable for understanding the codebase (python) and answers the questions.
+ - We have used  embedding models like sentence transformer for fast experimentation and protyping in compute minimal / local environments
+ - We have use chromadb for local and added pinecone which can be used for large scale serving
+ - We have AST based parsing which aids as metadata in prompt servving
+ - This is an initail setup we will be enhacing this with agent framwork to support question and answering of complex systems
+
+ - Next Steps:
+    - Query decomposition
+    - Data Segregation (Metadata Index + Code Index)
+    - Data Consolidation
+    - Support for efficient retreival using async tool calls
+    - explananbility in the systems
+    - Prompt Versioning and Guardrails
+
+
 ## Prerequisites
 - Python 3.9+
 - (Optional) Pinecone API key for production vector DB
@@ -57,65 +74,6 @@ uvicorn main:app --reload
 [User] ⇄ [Streamlit UI/API] ⇄ [FastAPI Backend] ⇄ [Ingestor] ⇄ [Vector Store] ⇄ [LLM]
 ```
 
----
-
-# Productionization & Scalability
-- Containerize with Docker
-- Use managed vector DB (Pinecone)
-- Deploy FastAPI on AWS ECS, GCP Cloud Run, or Azure App Service
-- Add authentication, rate limiting, and monitoring
-- Use cloud storage for uploads
-
----
-
-# RAG/LLM Approach & Decisions
-- **Chunking**: Configurable (line-based, AST, auto), overlap for context
-- **Embedding Model**: OpenAI `text-embedding-3-small` or local Sentence-BERT/BERT
-- **LLM**: OpenAI GPT-4 Turbo, Ollama, or local quantized (llama-cpp-python)
-- **Vector DB**: Chroma (dev), Pinecone (prod)
-- **Orchestration**: LangChain (optional), future: LangGraph
-- **Prompt**: Context blocks + user query, instruct LLM to answer only from context
-- **Guardrails**: LLM instructed to say "I don't know" if answer not in context
-- **Quality**: Top-k retrieval, chunk overlap, logging
-- **Observability**: Structured logs, error handling
-
----
-
-# Key Technical Decisions
-- Python for rapid prototyping and ecosystem
-- FastAPI for async, modern API
-- Chroma for local dev, Pinecone for scale
-- Modular code for maintainability
-- Simple, testable interfaces
-- Flexible backend for embeddings and LLMs
-- Cross-file reasoning for deeper code understanding
-
----
-
-# Engineering Standards
-- Type hints, docstrings, modularity
-- Logging and error handling
-- Separation of concerns
-- Minimal dependencies
-- Structured configuration with Pydantic
-
----
-
-# Use of AI Coding Tools
-- Used GitHub Copilot for boilerplate and code suggestions
-- All architectural and README content written and reviewed manually
-- AI tools used for code, not for README or design decisions
-
----
-
-# What I'd Do Differently With More Time
-- Add frontend UI (Vue/React)
-- Add authentication and user management
-- Add async background ingestion
-- Add more advanced chunking (AST, function-level)
-- Add tests and CI/CD
-- Add usage analytics and monitoring
-- Support for more LLMs and vector DBs
 
 ---
 
@@ -179,26 +137,6 @@ All endpoints return JSON. For `/ask`, the response includes:
 ### Notes
 - Ensure the backend is running before making requests.
 - Adjust URLs and payloads as needed for your environment.
-
----
-
-# Practical Future Extensions & Reasoning
-
-### 1. Support for More Languages
-- Extend AST-based chunking and relationship extraction to other languages (JavaScript/TypeScript, Java, Go, etc.) using language-specific parsers.
-- Reasoning: Enables deeper code understanding and cross-file reasoning for polyglot codebases.
-
-### 2. Advanced Code Analysis
-- Build call graphs, dependency graphs, and class hierarchies for richer context expansion.
-- Reasoning: Allows the assistant to answer architectural and flow questions, not just local function/class queries.
-
-### 3. Customizable Retrieval & Ranking
-- Add hybrid retrieval (semantic + relationship-based + keyword search).
-- Reasoning: Improves answer quality, especially for large or poorly documented codebases.
-
-### 4. Authentication & Multi-user Support
-- Add user authentication, session management, and per-user codebase isolation.
-- Reasoning: Makes the system production-ready for teams and organizations.
 
 ---
 
