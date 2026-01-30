@@ -5,7 +5,8 @@ About this project:
  - We have built a RAG system which is suitable for understanding the codebase (python) and answers the questions.
  - We have used  embedding models like sentence transformer for fast experimentation and protyping in compute minimal / local environments
  - We have use chromadb for local and added pinecone which can be used for large scale serving
- - We have AST based parsing which aids as metadata in prompt servving
+ - We have AST based parsing which aids as metadata in prompt serving
+ - We have used a local qunatized llama model for inference 
  - This is an initail setup we will be enhacing this with agent framwork to support question and answering of complex systems
 
  - Next Steps:
